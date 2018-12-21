@@ -169,7 +169,7 @@ namespace ConcaveRaycastDemo
         static Vector3 white = new Vector3(1.0f, 1.0f, 1.0f);
         //static Vector3 cyan = new Vector3(0.0f, 1.0f, 1.0f);
 
-        public void Draw(IDebugDraw drawer)
+        public void Draw(DebugDraw drawer)
         {
             int i;
             for (i = 0; i < NUMRAYS_IN_BAR; i++)
@@ -317,7 +317,7 @@ namespace ConcaveRaycastDemo
                 Vector3 worldMin = new Vector3(-1000, -1000, -1000);
                 Vector3 worldMax = new Vector3(1000, 1000, 1000);
 
-                groundShape.RefitTree(ref worldMin, ref worldMax);
+                groundShape.RefitTree(worldMin, worldMax);
 
                 //clear all contact points involving mesh proxy. Note: this is a slow/unoptimized operation.
                 Broadphase.OverlappingPairCache.CleanProxyFromPairs(staticBody.BroadphaseHandle, Dispatcher);

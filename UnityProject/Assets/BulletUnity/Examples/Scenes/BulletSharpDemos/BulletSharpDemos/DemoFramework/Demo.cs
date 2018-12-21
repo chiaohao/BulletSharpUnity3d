@@ -49,7 +49,7 @@ namespace DemoFramework
         // Debug drawing
         bool _isDebugDrawEnabled;
         DebugDrawModes _debugDrawMode = DebugDrawModes.DrawWireframe;
-        IDebugDraw _debugDrawer;
+        DebugDraw _debugDrawer;
 
         public DebugDrawModes DebugDrawMode
         {

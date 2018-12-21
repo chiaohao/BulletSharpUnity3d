@@ -171,7 +171,7 @@ namespace ConvexDecompositionDemo
             hacd.AddExtraDistPoints = false;
             hacd.AddNeighboursDistPoints = false;
             hacd.AddFacesPoints = false;
-            hacd.NVerticesPerCH = 100;     // max of 100 vertices per convex-hull
+            hacd.VerticesPerConvexHull = 100;     // max of 100 vertices per convex-hull
 
             hacd.Compute();
             hacd.Save("output.wrl", false);

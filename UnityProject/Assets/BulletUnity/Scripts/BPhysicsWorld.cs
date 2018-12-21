@@ -102,7 +102,7 @@ namespace BulletUnity
           }
           else
           {
-            IDebugDraw db = m_world.DebugDrawer;
+            DebugDraw db = m_world.DebugDrawer;
             if (db != null && db is IDisposable)
             {
               ((IDisposable)db).Dispose();

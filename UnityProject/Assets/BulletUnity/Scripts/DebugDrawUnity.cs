@@ -63,7 +63,7 @@ namespace BulletUnity
         public override void ReportErrorWarning(String warningString) {
             UnityEngine.Debug.LogError(warningString);
         }
-        public override void Draw3dText(ref BM.Vector3 location, String textString) {
+        public override void Draw3DText(ref BM.Vector3 location, String textString) {
             UnityEngine.Debug.LogError("Not implemented");
         }
         
@@ -89,11 +89,13 @@ namespace BulletUnity
             p2 = pos - rot * UnityEngine.Vector3.forward * orthoLen;
             UnityEngine.Gizmos.DrawLine(p1, p2);
         }
+        /*
         public override void DrawArc(ref BM.Vector3 center, ref BM.Vector3 normal, ref BM.Vector3 axis, float radiusA, float radiusB, float minAngle, float maxAngle,
             ref BM.Vector3 color, bool drawSect)
         {
             UnityEngine.Debug.LogError("Not implemented");
         }
+        */
         public override void DrawArc(ref BM.Vector3 center, ref BM.Vector3 normal, ref BM.Vector3 axis, float radiusA, float radiusB, float minAngle, float maxAngle,
             ref BM.Vector3 color, bool drawSect, float stepDegrees)
         {

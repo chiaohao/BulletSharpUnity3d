@@ -124,7 +124,7 @@ namespace BulletSharpExamples {
         //public MouseButtons MouseReleased;
         //public MouseButtons MouseDown;
 
-        public IDebugDraw GetPhysicsDebugDrawer() {
+        public DebugDraw GetPhysicsDebugDrawer() {
             return new DebugDrawUnity();
         }
 

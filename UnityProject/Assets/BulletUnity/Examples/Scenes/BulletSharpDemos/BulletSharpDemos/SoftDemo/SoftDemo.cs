@@ -4,7 +4,7 @@ using BulletSharp.SoftBody;
 using DemoFramework;
 using System;
 using System.Linq;
-using CollisionFlags = BulletSharp.SoftBody.CollisionFlags;
+using CollisionFlags = BulletSharp.SoftBody.Collisions;
 using BulletSharpExamples;
 
 namespace SoftDemo
@@ -80,7 +80,7 @@ namespace SoftDemo
 
         Point lastMousePos;
         Vector3 impact;
-        SRayCast results = new SRayCast();
+        SoftBodyRayCast results = new SoftBodyRayCast();
         Node node;
         Vector3 goal;
         bool drag;
@@ -1182,8 +1182,8 @@ namespace SoftDemo
                     Vector3 rayDir = rayTo - rayFrom;
                     rayDir.Normalize();
 
-                    SRayCast res = new SRayCast();
-                    if (SoftWorld.SoftBodyArray.Any(b => b.RayTest(ref rayFrom, ref rayTo, res)))
+                    SoftBodyRayCast res = new SoftBodyRayCast();
+                    if (SoftWorld.SoftBodyArray.Any(b => b.RayTest(rayFrom, rayTo, res)))
                     {
                         results = res;
                         impact = rayFrom + (rayTo - rayFrom) * results.Fraction;

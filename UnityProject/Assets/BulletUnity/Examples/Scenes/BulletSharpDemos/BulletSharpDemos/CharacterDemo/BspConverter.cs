@@ -1,5 +1,6 @@
 using BulletSharp;
 using BulletSharp.Math;
+using System.Collections.Generic;
 
 namespace CharacterDemo
 {
@@ -47,7 +48,9 @@ namespace CharacterDemo
                             if (isValidBrush)
                             {
                                 AlignedVector3Array vertices = new AlignedVector3Array();
-                                GeometryUtil.GetVerticesFromPlaneEquations(planeEquations, vertices);
+                                List<Vector3> v3s = GeometryUtil.GetVerticesFromPlaneEquations(planeEquations.GetVector3s());
+                                for (int index = 0; index < v3s.Count; index++)
+                                    vertices.Add(v3s[index]);
 
                                 const bool isEntity = false;
                                 Vector3 entityTarget = Vector3.Zero;
