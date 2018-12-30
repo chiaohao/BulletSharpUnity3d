@@ -285,7 +285,6 @@ namespace DemoFramework
             }
         }
 
-
         public virtual void OnHandleInput()
         {
             if (Input.KeysPressed.Count != 0)

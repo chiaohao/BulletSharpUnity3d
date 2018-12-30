@@ -26,7 +26,7 @@ public class BulletExampleRunner : MonoBehaviour {
     public GameObject softBodyPrefab;
     public List<GameObject> createdObjs = new List<GameObject>();
     public bool IsDebugDrawEnabled = false;
-    public string[] demoNames = new string[] { "BasicDemo", "BenchmarkDemo", "Box2DDemo", "BspDemo", "CcdPhysicsDemo", "CharacterDemo", "CollisionInterfaceDemo", "ConcaveConvexCastDemo", "ConcaveRaycastDemo",
+    public string[] demoNames = new string[] { "BasicDemo", "InverseDynamics", "BenchmarkDemo", "Box2DDemo", "CcdPhysicsDemo", "CollisionInterfaceDemo", "ConcaveConvexCastDemo", "ConcaveRaycastDemo",
                                                 "ConstraintDemo", "ConvexDecompositionDemo", "DistanceDemo", "FeatherStoneDemo", "GImpactTestDemo", "MotorDemo", "PendulumDemo", "RagdollDemo", "RollingFrictionDemo",
                                                 "SerializeDemo", "SoftDemo", "VehicleDemo"};
 
@@ -40,6 +40,10 @@ public class BulletExampleRunner : MonoBehaviour {
         if (nm.Equals("BasicDemo")) {
             demo = new BasicDemo.BasicDemo();
         }
+        if (nm.Equals("InverseDynamics"))
+        {
+            demo = new InverseDynamicsExample.InverseDynamicsExampleSimulation();
+        }
         if (nm.Equals("BenchmarkDemo"))
         {
             demo = new BenchmarkDemo.BenchmarkDemo();
@@ -48,17 +52,9 @@ public class BulletExampleRunner : MonoBehaviour {
         {
             demo = new Box2DDemo.Box2DDemo();
         }
-        if (nm.Equals("BspDemo"))
-        {
-            demo = new BspDemo.BspDemo();
-        }
         if (nm.Equals("CcdPhysicsDemo"))
         {
             demo = new CcdPhysicsDemo.CcdPhysicsDemo();
-        }
-        if (nm.Equals("CharacterDemo"))
-        {
-            demo = new CharacterDemo.CharacterDemo();
         }
         if (nm.Equals("CollisionInterfaceDemo"))
         {

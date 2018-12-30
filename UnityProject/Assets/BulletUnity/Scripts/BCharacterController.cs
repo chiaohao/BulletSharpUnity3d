@@ -10,7 +10,7 @@ namespace BulletUnity
 
         KinematicCharacterController m_characterController;
         public float stepHeight = 1f;
-        public int upAxis = 1; //0=x, 1=y, 2=z
+        public BulletSharp.Math.Vector3 upAxis = new BulletSharp.Math.Vector3(0f, 1f, 0f); //0=x, 1=y, 2=z
 
 
         public KinematicCharacterController GetKinematicCharacterController()
@@ -59,7 +59,7 @@ namespace BulletUnity
                 m_collisionObject = new PairCachingGhostObject();
                 m_collisionObject.CollisionShape = m_collisionShape.GetCollisionShape();
                 m_collisionObject.CollisionFlags = m_collisionFlags;
-                m_characterController = new KinematicCharacterController((PairCachingGhostObject)m_collisionObject, (ConvexShape)m_collisionShape.GetCollisionShape(), stepHeight, upAxis);
+                m_characterController = new KinematicCharacterController((PairCachingGhostObject)m_collisionObject, (ConvexShape)m_collisionShape.GetCollisionShape(), stepHeight, ref upAxis);
                 BulletSharp.Math.Matrix worldTrans;
                 BulletSharp.Math.Quaternion q = transform.rotation.ToBullet();
                 BulletSharp.Math.Matrix.RotationQuaternion(ref q, out worldTrans);
@@ -76,7 +76,7 @@ namespace BulletUnity
                 {
                     world.RemoveAction(m_characterController);
                 }
-                m_characterController = new KinematicCharacterController((PairCachingGhostObject)m_collisionObject, (ConvexShape)m_collisionShape.GetCollisionShape(), stepHeight, upAxis);
+                m_characterController = new KinematicCharacterController((PairCachingGhostObject)m_collisionObject, (ConvexShape)m_collisionShape.GetCollisionShape(), stepHeight, ref upAxis);
                 BulletSharp.Math.Matrix worldTrans;
                 BulletSharp.Math.Quaternion q = transform.rotation.ToBullet();
                 BulletSharp.Math.Matrix.RotationQuaternion(ref q, out worldTrans);

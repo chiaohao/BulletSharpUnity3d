@@ -80,7 +80,7 @@ namespace SoftDemo
 
         Point lastMousePos;
         Vector3 impact;
-        SoftBodyRayCast results = new SoftBodyRayCast();
+        //SRayCast results = new SRayCast();
         Node node;
         Vector3 goal;
         bool drag;
@@ -1174,6 +1174,7 @@ namespace SoftDemo
 
             if (Input.MousePressed == MouseButtons.Right)
             {
+                /*
                 results.Fraction = 1;
                 if (pickConstraint == null)
                 {
@@ -1182,8 +1183,8 @@ namespace SoftDemo
                     Vector3 rayDir = rayTo - rayFrom;
                     rayDir.Normalize();
 
-                    SoftBodyRayCast res = new SoftBodyRayCast();
-                    if (SoftWorld.SoftBodyArray.Any(b => b.RayTest(rayFrom, rayTo, res)))
+                    SRayCast res = new SRayCast();
+                    if (SoftWorld.SoftBodyArray.Any(b => b.RayTest(ref rayFrom, ref rayTo, res)))
                     {
                         results = res;
                         impact = rayFrom + (rayTo - rayFrom) * results.Fraction;
@@ -1217,9 +1218,11 @@ namespace SoftDemo
                         }
                     }
                 }
+                */
             }
             else if (Input.MouseReleased == MouseButtons.Right)
             {
+                /*
                 if (!drag && cutting && results.Fraction < 1)
                 {
                     using (var isphere = new ImplicitSphere(ref impact, 1))
@@ -1229,11 +1232,13 @@ namespace SoftDemo
                 }
                 results.Fraction = 1;
                 drag = false;
+                */
             }
 
             // Mouse movement
             if (Input.MouseDown == MouseButtons.Right)
             {
+                /*
                 if (node != null && results.Fraction < 1)
                 {
                     if (!drag)
@@ -1250,6 +1255,7 @@ namespace SoftDemo
                         lastMousePos = Input.MousePoint;
                     }
                 }
+                */
             }
 
             base.OnHandleInput();

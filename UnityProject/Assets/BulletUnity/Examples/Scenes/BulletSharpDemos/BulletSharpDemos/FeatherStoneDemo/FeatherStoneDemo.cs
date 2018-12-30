@@ -34,6 +34,8 @@ namespace FeatherStoneDemo
 
         protected override void OnInitializePhysics()
         {
+            IsDebugDrawEnabled = true;
+
             // collision configuration contains default setup for memory, collision setup
             CollisionConf = new DefaultCollisionConfiguration();
             Dispatcher = new CollisionDispatcher(CollisionConf);
@@ -156,45 +158,6 @@ namespace FeatherStoneDemo
             (World as MultiBodyDynamicsWorld).AddMultiBody(mb);
 
             return mb;
-        }
-
-        void AddBoxes()
-        {
-            // create a few dynamic rigidbodies
-            const float mass = 1.0f;
-
-            BoxShape colShape = new BoxShape(1);
-            CollisionShapes.Add(colShape);
-            Vector3 localInertia = colShape.CalculateLocalInertia(mass);
-
-            const float startX = StartPosX - ArraySizeX / 2;
-            const float startY = StartPosY;
-            const float startZ = StartPosZ - ArraySizeZ / 2;
-
-            int k, i, j;
-            for (k = 0; k < ArraySizeY; k++)
-            {
-                for (i = 0; i < ArraySizeX; i++)
-                {
-                    for (j = 0; j < ArraySizeZ; j++)
-                    {
-                        Matrix startTransform = Matrix.Translation(
-                            3 * i + startX,
-                            3 * k + startY,
-                            3 * j + startZ
-                        );
-
-                        // using motionstate is recommended, it provides interpolation capabilities
-                        // and only synchronizes 'active' objects
-                        DefaultMotionState myMotionState = new DefaultMotionState(startTransform);
-                        using (var rbInfo = new RigidBodyConstructionInfo(mass, myMotionState, colShape, localInertia))
-                        {
-                            var body = new RigidBody(rbInfo);
-                            World.AddRigidBody(body);
-                        }
-                    }
-                }
-            }
         }
 
         void AddColliders(MultiBody multiBody, Vector3 baseHalfExtents, Vector3 linkHalfExtents)
